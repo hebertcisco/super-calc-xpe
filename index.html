@@ -1,180 +1,107 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
-
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Super Calc Xpe</title>
     <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
     </style>
-    <link rel="stylesheet" href="./css/style.css">
-</head>
+    <link rel="stylesheet" href="./css/style.css" />
+  </head>
 
-<body>
-<header>
-    <h1 class="header-title">Super Calc Xpe</h1>
-    <div  class="header-form-container">
+  <body>
+    <header>
+      <h1 class="header-title">Super Calc Xpe</h1>
+      <div class="header-form-container">
         <form class="header-form">
-            <label for="num1">Primeiro número</label>
-            <input type="number" id="num1">
-            <label for="num2">Segundo número</label>
-            <input type="number" id="num2">
-            <button type="button" id="btn-calcular">Calcular</button>
+          <label for="num1">Primeiro número</label>
+          <input type="number" id="num1" />
+          <label for="num2">Segundo número</label>
+          <input type="number" id="num2" />
+          <button type="button" id="btn-calcular">Calcular</button>
         </form>
-    </div>
+      </div>
+    </header>
 
-</header>
-
-<main>
-    <div class="result-area">
-        <table
-            class="result-table">
-            <thead>
+    <main>
+      <div class="result-area">
+        <table class="result-table">
+          <thead>
             <tr>
-                <th>Operação A para B</th>
-                <th>Resultado A para B</th>
-                <th>Resultado B para A</th>
+              <th>Operação A para B</th>
+              <th>Resultado A para B</th>
+              <th>Resultado B para A</th>
             </tr>
-            </thead>
-            <tbody>
+          </thead>
+          <tbody>
             <tr>
-                <td>Soma</td>
-                <td id="resultado-soma">0</td>
-                <td id="resultado-soma-instead">0</td>
+              <td>Soma</td>
+              <td id="resultado-soma">0</td>
+              <td id="resultado-soma-instead">0</td>
             </tr>
 
             <tr>
-                <td>Multiplicação</td>
-                <td id="resultado-multiplicacao">0</td>
-                <td id="resultado-multiplicacao-instead">0</td>
+              <td>Multiplicação</td>
+              <td id="resultado-multiplicacao">0</td>
+              <td id="resultado-multiplicacao-instead">0</td>
             </tr>
 
             <tr>
-                <td>Potência</td>
-                <td id="resultado-potencia">0</td>
-                <td id="resultado-potencia-instead">0</td>
+              <td>Potência</td>
+              <td id="resultado-potencia">0</td>
+              <td id="resultado-potencia-instead">0</td>
             </tr>
 
             <tr>
-                <td>Raiz quadrada</td>
-                <td id="resultado-raiz-quadrada">0</td>
-                <td id="resultado-raiz-quadrada-instead">0</td>
+              <td>Raiz quadrada</td>
+              <td id="resultado-raiz-quadrada">0</td>
+              <td id="resultado-raiz-quadrada-instead">0</td>
             </tr>
 
             <tr>
-                <td>Porcentagem</td>
-                <td id="resultado-porcentagem">0</td>
-                <td id="resultado-porcentagem-instead">0</td>
+              <td>Porcentagem</td>
+              <td id="resultado-porcentagem">0</td>
+              <td id="resultado-porcentagem-instead">0</td>
             </tr>
 
             <tr>
-                <td>Subtração</td>
-                <td id="resultado-subtracao">0</td>
-                <td id="resultado-subtracao-instead">0</td>
+              <td>Subtração</td>
+              <td id="resultado-subtracao">0</td>
+              <td id="resultado-subtracao-instead">0</td>
             </tr>
 
             <tr>
-                <td>Divisão</td>
-                <td id="resultado-divisao">0</td>
-                <td id="resultado-divisao-instead">0</td>
+              <td>Divisão</td>
+              <td id="resultado-divisao">0</td>
+              <td id="resultado-divisao-instead">0</td>
             </tr>
 
             <tr>
-                <td>Fatorial</td>
-                <td id="resultado-fatorial">0</td>
-                <td id="resultado-fatorial-instead">0</td>
-
+              <td>Fatorial</td>
+              <td id="resultado-fatorial">0</td>
+              <td id="resultado-fatorial-instead">0</td>
             </tr>
 
             <tr>
-                <td>Média</td>
-                <td id="resultado-media">0</td>
-                <td id="resultado-media-instead">0</td>
+              <td>Média</td>
+              <td id="resultado-media">0</td>
+              <td id="resultado-media-instead">0</td>
             </tr>
-            </tbody>
+          </tbody>
         </table>
-    </div>
-</main>
+      </div>
+    </main>
 
-<script type="module">
-    import {
-        divisao,
-        fatorial,
-        media,
-        multiplicacao,
-        porcentagem,
-        potencia,
-        raizQuadrada,
-        soma,
-        subtracao
-    } from "./js";
+    <script type="module">
+      import { App } from "./js/view/index.js";
 
-    const btnCalcular = document.getElementById('btn-calcular');
-    const num1 = document.getElementById('num1');
-    const num2 = document.getElementById('num2');
-
-    const resultadoDivisao = document.getElementById('resultado-divisao');
-    const resultadoDivisaoInstead = document.getElementById('resultado-divisao-instead');
-
-    const resultadoFatorial = document.getElementById('resultado-fatorial');
-    const resultadoFatorialInstead = document.getElementById('resultado-fatorial-instead');
-
-    const resultadoMedia = document.getElementById('resultado-media');
-    const resultadoMediaInstead = document.getElementById('resultado-media-instead');
-
-    const resultadoMultiplicacao = document.getElementById('resultado-multiplicacao');
-    const resultadoMultiplicacaoInstead = document.getElementById('resultado-multiplicacao-instead');
-
-    const resultadoPorcentagem = document.getElementById('resultado-porcentagem');
-    const resultadoPorcentagemInstead = document.getElementById('resultado-porcentagem-instead');
-
-    const resultadoPotencia = document.getElementById('resultado-potencia');
-    const resultadoPotenciaInstead = document.getElementById('resultado-potencia-instead');
-
-    const resultadoRaizQuadrada = document.getElementById('resultado-raiz-quadrada');
-    const resultadoRaizQuadradaInstead = document.getElementById('resultado-raiz-quadrada-instead');
-
-    const resultadoSoma = document.getElementById('resultado-soma');
-    const resultadoSomaInstead = document.getElementById('resultado-soma-instead');
-
-    const resultadoSubtracao = document.getElementById('resultado-subtracao');
-    const resultadoSubtracaoInstead = document.getElementById('resultado-subtracao-instead');
-
-    btnCalcular.addEventListener('click', () => {
-        resultadoDivisao.innerHTML = divisao(num1.value, num2.value);
-        resultadoDivisaoInstead.innerHTML = divisao(num2.value, num1.value);
-
-        resultadoFatorial.innerHTML = fatorial(num1.value);
-        resultadoFatorialInstead.innerHTML = fatorial(num2.value);
-
-        resultadoMedia.innerHTML = media(num1.value, num2.value);
-        resultadoMediaInstead.innerHTML = media(num2.value, num1.value);
-
-        resultadoMultiplicacao.innerHTML = multiplicacao(num1.value, num2.value);
-        resultadoMultiplicacaoInstead.innerHTML = multiplicacao(num2.value, num1.value);
-
-        resultadoPorcentagem.innerHTML = porcentagem(num1.value, num2.value) + '%';
-        resultadoPorcentagemInstead.innerHTML = porcentagem(num2.value, num1.value) + '%';
-
-        resultadoPotencia.innerHTML = potencia(num1.value, num2.value);
-        resultadoPotenciaInstead.innerHTML = potencia(num2.value, num1.value);
-
-        resultadoRaizQuadrada.innerHTML = raizQuadrada(num1.value);
-        resultadoRaizQuadradaInstead.innerHTML = raizQuadrada(num2.value);
-
-        resultadoSoma.innerHTML = soma(num1.value, num2.value);
-        resultadoSomaInstead.innerHTML = soma(num2.value, num1.value);
-
-        resultadoSubtracao.innerHTML = subtracao(num1.value, num2.value);
-        resultadoSubtracaoInstead.innerHTML = subtracao(num2.value, num1.value);
-    });
-</script>
-</body>
-
+      App.initialize(document);
+    </script>
+  </body>
 </html>
